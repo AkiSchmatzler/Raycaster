@@ -1,13 +1,20 @@
 CC = g++
 IFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+SRC = src/
 
 
 main :
-	g++ -c Player.cpp -lsfml-graphics
-	g++ -c Rays.cpp -lsfml-graphics
-	$(CC) -o grid grid.cpp $(IFLAGS) Player.cpp Rays.cpp
+	$(CC) -c $(SRC)Grid.cpp
+	$(CC) -c $(SRC)Rays.cpp -lsfml-graphics
+	$(CC) -c $(SRC)Player.cpp -lsfml-graphics
+	$(CC) -o main $(SRC)main.cpp $(IFLAGS) $(SRC)Player.cpp $(SRC)Rays.cpp $(SRC)Grid.cpp
+	mkdir obj/
+	mkdir bin/
+	mv *.o obj/
+	mv main bin/
+
 
 .PHONY : clean
 
 clean: 
-	rm grid *.o
+	rm -rf bin/ obj/

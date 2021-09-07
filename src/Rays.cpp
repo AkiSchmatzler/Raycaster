@@ -1,3 +1,10 @@
+/**
+ * \file Rays.cpp
+ * \brief definition of functions for Rays class
+ * \date 07/09/2021
+ * \author Aki Schmatzler
+ */
+
 #include "Rays.hpp"
 
 Rays::Rays(int _nbRays, int _maxDistance, int _viewAngle, int** _grid, int _X, int _Y) {
@@ -63,10 +70,8 @@ sf::Vector2f Rays::distanceToWall(double angle, sf::RenderWindow &window) {
 
 		
 	 	if (xTab >= 0 && yTab >= 0 && xTab < X && yTab < Y){
-			// std::cout  <<"i == " << i << " " << xTab << " " << yTab << std::endl; 
 			if (grid[yTab][xTab] != 0){
 				depth = 8; //there's a wall!
-				//std::cout << xTab << " " << yTab << std::endl;
 			} 
 			else {
 				xTmp += xOffset;
@@ -124,5 +129,4 @@ sf::Vector2f Rays::distanceToWall(double angle, sf::RenderWindow &window) {
 void Rays::update(sf::Vector2f position, float rotation) {
 	playerPosition = position;
 	playerRotation = rotation;
-	//std::cout << playerPosition.x << " " << playerPosition.y << std::endl;
 }
